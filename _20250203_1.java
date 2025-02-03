@@ -4,37 +4,12 @@ package _20250203_1;
 class Solution {
     public int solution(int[][] dots) {
 
-        int x = 0;
-        int y = 0;
-
-        for (int i = 1; i < 4; i++) {
-
-            x = dots[0][0];
-            y = dots[0][1];
-            int tmp_x = -1;
-            int tmp_y = -1;
-
-            for (int j = 1; j < 4; j++) {
-                if (j == i) {
-                    x -= dots[j][0];
-                    y -= dots[j][1];
-                } else {
-                    if (tmp_x == -1) {
-                        tmp_x = dots[j][0];
-                        tmp_y = dots[j][1];
-                    } else {
-                        tmp_x -= dots[j][0];
-                        tmp_y -= dots[j][1];
-                    }
-                }
-            }
-
-            if (x == tmp_x && y == tmp_y)
-                return 1;
-            if (x == tmp_x * -1 && y == tmp_y * -1)
-                return 1;
-
-        }
+        if ((dots[0][0] - dots[1][0]) * (dots[2][1] - dots[3][1]) == (dots[0][1] - dots[1][1]) * (dots[2][0] - dots[3][0]))
+            return 1;
+        if ((dots[0][0] - dots[2][0]) * (dots[1][1] - dots[3][1]) == (dots[0][1] - dots[2][1]) * (dots[1][0] - dots[3][0]))
+            return 1;
+        if ((dots[0][0] - dots[3][0]) * (dots[1][1] - dots[2][1]) == (dots[0][1] - dots[3][1]) * (dots[1][0] - dots[2][0]))
+            return 1;
 
         return 0;
 
